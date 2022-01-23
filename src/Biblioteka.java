@@ -31,7 +31,7 @@ public class Biblioteka {
         System.out.println("---------------------------------------");
         System.out.println("Сортировка по количеству страниц:");
         bookshelf = (ArrayList<Kniga>) bookshelf.stream().
-                sorted(Comparator.comparing(b -> b.numberOfPages))
+                sorted(Comparator.comparing(Kniga::getNumberOfPages))
                 .collect(Collectors.toList());
         for (Kniga a : bookshelf) {
             System.out.println(a.toString());
@@ -40,7 +40,7 @@ public class Biblioteka {
         System.out.println("---------------------------------------");
         System.out.println("Сортировка по автору:");
         bookshelf = (ArrayList<Kniga>) bookshelf.stream()
-                .sorted(Comparator.comparing(b -> b.author))
+                .sorted(Comparator.comparing(Kniga::getAuthor))
                 .collect(Collectors.toList());
         for (Kniga a : bookshelf) {
             System.out.println(a.toString());
@@ -49,14 +49,21 @@ public class Biblioteka {
 }
 
 class Kniga {
-    String author;
-    int numberOfPages;
+    private String author;
+    private int numberOfPages;
 
     Kniga(String author, int numberOfPages) {
         this.author = author;
         this.numberOfPages = numberOfPages;
     }
 
+    public int getNumberOfPages() {
+        return numberOfPages;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
 
     @Override
     public String toString() {
