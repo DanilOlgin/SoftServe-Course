@@ -49,8 +49,8 @@ public class Biblioteka {
 }
 
 class Kniga {
-    String author;
-    int numberOfPages;
+    private String author;
+    private int numberOfPages;
 
     Kniga(String author, int numberOfPages) {
         this.author = author;
