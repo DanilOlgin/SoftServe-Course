@@ -12,16 +12,15 @@ public class Biblioteka {
         String name = reader.readLine();
         ArrayList<Kniga> bookshelf = new ArrayList<>();
 
-
         while (name.equals("yes") || name.equals("y")) {
-            Kniga kniga = new Kniga();
             System.out.println("Введите автора:");
-            kniga.author = reader.readLine();
+            String author = reader.readLine();
             System.out.println("Введите количество страниц книги:");
-            kniga.numberOfPages = Integer.parseInt(reader.readLine());
+            int numberOfPages = Integer.parseInt(reader.readLine());
+            Kniga kniga = new Kniga(author, numberOfPages);
+            bookshelf.add(kniga);
             System.out.println("Вы желаете добавить еще книгу? Введите yes или y для продолжения.");
             name = reader.readLine();
-            bookshelf.add(kniga);
         }
 
         System.out.println("Вы ввели следующие книги:");
@@ -40,8 +39,8 @@ public class Biblioteka {
 
         System.out.println("---------------------------------------");
         System.out.println("Сортировка по автору:");
-        bookshelf = (ArrayList<Kniga>) bookshelf.stream().
-                sorted(Comparator.comparing(b -> b.author))
+        bookshelf = (ArrayList<Kniga>) bookshelf.stream()
+                .sorted(Comparator.comparing(b -> b.author))
                 .collect(Collectors.toList());
         for (Kniga a : bookshelf) {
             System.out.println(a.toString());
@@ -52,6 +51,12 @@ public class Biblioteka {
 class Kniga {
     String author;
     int numberOfPages;
+
+    Kniga(String author, int numberOfPages) {
+        this.author = author;
+        this.numberOfPages = numberOfPages;
+    }
+
 
     @Override
     public String toString() {
