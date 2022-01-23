@@ -12,7 +12,6 @@ public class Biblioteka {
         String name = reader.readLine();
         ArrayList<Kniga> bookshelf = new ArrayList<>();
 
-
         while (name.equals("yes") || name.equals("y")) {
             Kniga kniga = new Kniga();
             System.out.println("Введите автора:");
@@ -30,6 +29,7 @@ public class Biblioteka {
         }
 
         System.out.println("---------------------------------------");
+        
         System.out.println("Сортировка по количеству страниц:");
         bookshelf = (ArrayList<Kniga>) bookshelf.stream().
                 sorted(Comparator.comparing(b -> b.numberOfPages))
@@ -39,9 +39,10 @@ public class Biblioteka {
         }
 
         System.out.println("---------------------------------------");
+        
         System.out.println("Сортировка по автору:");
-        bookshelf = (ArrayList<Kniga>) bookshelf.stream().
-                sorted(Comparator.comparing(b -> b.author))
+        bookshelf = (ArrayList<Kniga>) bookshelf.stream()
+                .sorted(Comparator.comparing(b -> b.author))
                 .collect(Collectors.toList());
         for (Kniga a : bookshelf) {
             System.out.println(a.toString());
