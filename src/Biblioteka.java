@@ -30,8 +30,8 @@ public class Biblioteka {
 
         System.out.println("---------------------------------------");
         System.out.println("Сортировка по количеству страниц:");
-        bookshelf = (ArrayList<Kniga>) bookshelf.stream().
-                sorted(Comparator.comparing(b -> b.numberOfPages))
+        bookshelf = (ArrayList<Kniga>) bookshelf.stream()
+                .sorted(Comparator.comparing(b -> b.numberOfPages))
                 .collect(Collectors.toList());
         for (Kniga a : bookshelf) {
             System.out.println(a.toString());
